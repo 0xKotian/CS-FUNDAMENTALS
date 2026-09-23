@@ -41,3 +41,15 @@ int main(){
     cout<<"after dept change"<<endl;
     t1.changedept("chemistry");
 }
+/*
+output : 
+
+rahul
+computer science
+after dept change
+department changed to : maths
+neha
+physics
+after dept change
+department changed to : chemistry
+*/
