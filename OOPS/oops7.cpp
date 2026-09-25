@@ -1,3 +1,13 @@
+/*
+class Student : virtual public Person
+class Teacher : virtual public Person
+
+The TeachingAssistant inherits from both Student and Teacher. Both classes inherit from Person.
+
+Without virtual, TeachingAssistant could get two copies of Person, causing ambiguity when accessing name or age.
+
+Virtual inheritance ensures that the Teaching Assistant has one shared Person base.
+*/
 #include <iostream>
 using namespace std;
 
@@ -19,8 +29,7 @@ class Student : virtual public Person {
 public:
     int rollNo;
 
-    Student(string n, int a, int r)
-        : Person(n, a) {
+    Student(string n, int a, int r) : Person(n, a) {
         rollNo = r;
     }
 };
@@ -31,8 +40,7 @@ class GraduationStudent : public Student {
 public:
     string researchArea;
 
-    GraduationStudent(string n, int a, int r, string area)
-        : Person(n, a), Student(n, a, r) {
+    GraduationStudent(string n, int a, int r, string area) : Person(n, a), Student(n, a, r) {
         researchArea = area;
     }
 
@@ -51,8 +59,7 @@ class Teacher : virtual public Person {
 public:
     double salary;
 
-    Teacher(string n, int a, double s)
-        : Person(n, a) {
+    Teacher(string n, int a, double s) : Person(n, a) {
         salary = s;
     }
 };
@@ -66,11 +73,7 @@ class TeachingAssistant : public Student, public Teacher {
 public:
     string department;
 
-    TeachingAssistant(string n, int a, int r,
-                      double s, string d)
-        : Person(n, a),
-          Student(n, a, r),
-          Teacher(n, a, s) {
+    TeachingAssistant(string n, int a, int r, double s, string d) : Person(n, a), Student(n, a, r), Teacher(n, a, s) {
         department = d;
     }
 
